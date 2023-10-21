@@ -13,7 +13,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "description_f")
+    @Column(name = "description_f", nullable = false)
     private String description;
 
     @ManyToOne
