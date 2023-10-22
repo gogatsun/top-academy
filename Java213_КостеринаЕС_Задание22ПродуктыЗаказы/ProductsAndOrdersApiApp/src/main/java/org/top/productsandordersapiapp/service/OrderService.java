@@ -12,6 +12,6 @@ public interface OrderService {
     Optional<Order> add(Order order); // добавление заказа
     Optional<Order> getById(Integer id); // получение заказа по id
     List<Order> getByClientId(Integer id); // получение заказов по id клиента
-    Optional<Order> update(Order order); // изменение description заказа
+    Optional<Order> update(Integer id, String description); // изменение description заказа
 
 }
