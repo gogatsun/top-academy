@@ -39,7 +39,7 @@ public class OrderController {
     }
 
     @PostMapping("update")
-    public Optional<Order> update(@RequestBody Integer id, @RequestBody String description) {
+    public Optional<Order> update(@RequestParam Integer id, @RequestParam String description) {
         return orderService.update(id, description);
     }
 
