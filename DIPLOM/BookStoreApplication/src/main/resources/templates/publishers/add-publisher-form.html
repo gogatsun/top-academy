@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление издательства</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container-fluid text-center">
+        <form method="post" th:action="@{/publishers/new-publisher}" th:object="${publisher}">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="title">
+                    Наименование:
+                </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="title" type="text" maxlength="255"
+                           th:field="*{title}" required/>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="description">
+                    Описание:
+                </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="description" type="text" maxlength="255"
+                           th:field="*{description}"/>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <button class="btn btn-success form-control">Сохранить</button>
+                </div>
+                <div class="col-sm-5">
+                    <a class="btn btn-danger form-control" th:href="@{/publishers}">Отменить</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
