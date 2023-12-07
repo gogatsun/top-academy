@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BungoSD - книжный магазин</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+    <header th:replace="~{layout/fragment-header.html :: header-fragment(page='books')}"></header>
+
+    <div class="container-fluid col-sm-9">
+
+        <div id="carouselExample" class="carousel slide">
+            <!--<div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="" class="d-block w-100" height="150" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="" class="d-block w-100" height="150" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="" class="d-block w-100" height="150" alt="...">
+                </div>
+            </div>-->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="row my-3 py-3">
+            <div class="col-sm-3">
+                <p class="h2">Книги</p>
+            </div>
+            <div class="col-sm-9 my-auto text-end">
+                <p class="h5">
+                    <a th:href="@{/books}" class="text-decoration-none text-secondary link-opacity-25-hover">
+                        Показать все...</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row row-cols-4">
+                <div th:each="book: ${books}" class="col-auto mb-4 ">
+                    <div class="card" style="width: 15rem;">
+                        <img src="" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title text-center">
+                                <a class="text-decoration-none text-dark" th:href="@{'books/book-details/' + ${book.id}}">
+                                    [[${book.title}]]
+                                </a>
+                            </h6>
+                            <p class="card-text text-end">[[${book.author}]]</p>
+                            <p class="card-text text-truncate">[[${book.description}]]</p>
+                            <div class="row">
+                                <div class="col my-auto">
+                                    <h5 class="card-title text-center text-primary text-end">1150 руб.</h5>
+                                </div>
+                                <div class="col">
+                                    <p class="text-end my-auto">
+                                        <a href="#" class="btn btn-primary">Купить</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3 py-3 border-bottom"></div>
+
+
+        <div class="row my-3 py-3">
+            <div class="col-sm-3">
+                <p class="h3">Авторы</p>
+            </div>
+            <div class="col-sm-9 my-auto text-end">
+                <p class="h5">
+                    <a th:href="@{/authors}" class="text-decoration-none text-secondary link-opacity-25-hover">
+                        Показать все...</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row row-cols-4">
+                <div th:each="author: ${authors}" class="col-auto mb-4 ">
+                    <div class="card col col-sm-3 my-auto bg-body-secondary" style="width: 15rem;">
+                        <div class="card-body my-auto">
+                            <h5 class="card-text">[[${author.name}]]</h5>
+                            <h5 class="card-text">[[${author.surname}]]</h5>
+                            <p class="text-end my-auto">
+                                <a href="#" class="btn btn-outline-dark">Книги</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="my-3 py-3 border-bottom"></div>
+
+        <div class="row my-3 py-3">
+            <div class="col-sm-3">
+                <p class="h3">Книжные циклы</p>
+            </div>
+            <div class="col-sm-9 my-auto text-end">
+                <p class="h5">
+                    <a th:href="@{/series}" class="text-decoration-none text-secondary link-opacity-25-hover">
+                        Показать все...</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row row-cols-4">
+                <div th:each="cycle: ${series}" class="col-auto mb-4 ">
+                    <div class="card col col-sm-3 my-auto bg-body-secondary" style="width: 32rem; height: 14rem">
+                        <div class="card-body my-auto">
+                            <h4 class="card-title">[[${cycle.title}]]</h4>
+                            <h6 class="card-text py-3">[[${cycle.description}]]</h6>
+                            <p class="text-end my-auto sticky-bottom">
+                                <a href="#" class="btn btn-outline-dark">Подробнее</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="~{layout/fragment-footer.html :: footer-fragment}"></th:block>
+
+</body>
+</html>
